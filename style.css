@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #4fb4df, #dff6fb);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  text-align: center;
+  padding: 20px;
+}
+
+.card {
+  padding: 30px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  margin: auto;
+  color: #022c43;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #079dde;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-top: 0.2rem;
+}
+#last{
+    font-size: 1.3rem;
+  margin-top: 0.2rem;
+  color:black
+}
