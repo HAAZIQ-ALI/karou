@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39&display=swap');
+
+
+:root {
+  /* Fonts */
+  --font-ibm: "IBM Plex Mono", monospace;
+  --font-bar: "Libre Barcode 39", cursive;
+
+  /* Colors */
+  --color-background: #1E1E2E;  /* dark slate */
+  --color-background-light: #313244; /* lighter dark */
+  --color-primary: #CBA6F7;  /* purple */
+  --color-secondary: #89B4FA; /* soft blue */
+  --color-accent: #F38BA8;  /* pink/red */
+  --color-muted: #6C7086;   /* grayish */
+  --color-highlight: #A6E3A1; /* green highlight */
+
+  /* Typography sizes */
+  --text-4-5xl: 2.5rem;
+  --text-7xl: 5rem;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure fonts are applied */
+.font-ibm {
+  font-family: "IBM Plex Mono", monospace !important;
+}
+
+.font-barcode {
+  font-family: "Libre Barcode 39", cursive !important;
+}
+
+#glass {
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+}
+.text-glow{
+  text-shadow: 0 0 5px rgba(207, 231, 244, 0.8);
+}
+
+#glass span {
+  text-shadow: none !important;
+}
