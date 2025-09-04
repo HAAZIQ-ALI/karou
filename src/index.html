@@ -33,9 +33,24 @@
 </head>
 <body class="bg-[#1E1E2E] text-primary font-poppins min-h-screen">
   <div class="flex justify-end p-4">
-    <h2 class="font-ibm text-xl sm:text-2xl md:text-3xl lg:text-3xl text-highlight leading-relaxed">ハージク・アリ</h2>
+    <div class="flex items-center space-x-4">
+      <h2 class="font-ibm text-xl sm:text-2xl md:text-3xl lg:text-3xl text-highlight leading-relaxed" id="nav-bar">ハージク・アリ</h2>
+      <button id="menu-btn" class="text-highlight hover:text-primary transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <nav id="nav-menu" class="hidden absolute top-16 right-4 bg-[#1E1E2E] border border-muted rounded-lg p-4 shadow-lg">
+      <ul class="space-y-2">
+        <li><a href="#intro" class="block text-muted hover:text-highlight transition-colors">Home</a></li>
+        <li><a href="#about" class="block text-muted hover:text-highlight transition-colors">About</a></li>
+        <li><a href="#works" class="block text-muted hover:text-highlight transition-colors">Works</a></li>
+        <li><a href="#contact" class="block text-muted hover:text-highlight transition-colors">Contact</a></li>
+      </ul>
+    </nav>
   </div>
-  <div class="flex justify-center items-center min-h-screen">
+  <div class="flex justify-center items-center min-h-screen" id="intro">
     <section class="flex flex-col px-4 py-8 sm:px-8 md:px-16 lg:px-10 xl:px-14 w-full max-w-7xl mx-auto">
       <h2 class="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Hi I'm </h2>
       <h1 class="text-[#89B4FA] font-ibm font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight">Haaziq</h1>
@@ -45,30 +60,52 @@
 
   <div class="w-full flex flex-col md:flex-row justify-between items-center p-4 md:p-8 text-slate-400 font-inter gap-4 md:gap-0">
     <a href="https://github.com/HAAZIQ-ALI" target="_blank" class="hover:text-white transition-colors">GITHUB.COM/HAAZIQ-ALI</a>
-    <a href="mailto:haaziq@karou.com" class="hover:text-white transition-colors">haaziq@karou.me</a>
+
     <p class="text-sm">©hazy</p>
   </div>
 
-  <section class="w-full mx-auto flex justify-center pt-20 px-4">
+  <section class="w-full mx-auto flex justify-center pt-20 px-4 " id="about">
     <div class="w-full max-w-6xl flex flex-col md:flex-row items-center gap-6 md:gap-8">
       <div class="w-full md:w-auto flex justify-center md:justify-start">
-        <img src="pfp.jpeg" alt="Profile Picture" class="w-64 h-64 md:w-96 md:h-96 object-cover rounded-lg border border-[#6C7086] shadow-lg">
+        
+<img src="pfp.jpeg" alt="Profile Picture" class="w-64 h-64 md:w-96 md:h-96 object-cover rounded-lg border border-[#6C7086] shadow-lg">
       </div>
-      <div class="bg-[#9EE3B9] text-slate-400 p-4 md:p-6 rounded-lg w-full md:flex-1 text-glow " id="glass">
+      <div class="bg-[#9EE3B9] text-white p-4 md:p-6 rounded-lg w-full md:flex-1 text-glow " id="glass">
         <h1 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-3 md:mb-4 text-center md:text-left">I'm Haaziq Ali, a 15-year-old passionate about turning creative ideas into reality.</h1>
         <h2 class="text-lg md:text-xl lg:text-2xl leading-relaxed text-center md:text-left">I love solving problems and building projects—you can check out my work in my repos. <br><br> Outside coding, I enjoy chess, cooking, anime, and always learning something new. My journey is about constant growth, exploration, and improvement.</h2>
-        <h2 class="text-lg md:text-xl lg:text-2xl leading-relaxed text-center md:text-left mt-2">Languages : <span style="color: #00599C;">C</span> <span style="color: #00599C;">C++</span> <span style="color: #3776AB;">Python</span> <span style="color: #FF4500;">Rust</span> <span style="color: #00ADD8;">Go</span> <span style="color: #F7DF1E;">JavaScript</span> </h2>
-         <h2 class="text-lg md:text-xl lg:text-2xl leading-relaxed text-center md:text-left mt-2">FrameWorks : <span style="color: #61DAFB;">React.JS</span> <span style="color: #FFC131;">Tauri</span> <span style="color: #06B6D4;">TailWind CSS</span>   </h2>
-          <h2 class="text-lg md:text-xl lg:text-2xl leading-relaxed text-center md:text-left mt-2">Magical Tools that i use : <span style="color: #F05032;">Git & GitHub</span> <span style="color: #007ACC;">VS Code</span> <span style="color: #57A143;">NeoVim</span>  </h2>
+        <h2 class="text-lg md:text-xl lg:text-2xl leading-relaxed text-center md:text-left mt-2">Languages :</h2>
+        <div class="flex flex-wrap gap-2 mt-2 justify-center md:justify-start">
+          <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">C</span>
+          <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">C++</span>
+          <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Python</span>
+          <span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">Rust</span>
+          <span class="bg-cyan-500 text-white px-3 py-1 rounded-full text-sm font-medium">Go</span>
+          <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+        </div>
+        <h2 class="text-lg md:text-xl lg:text-2xl leading-relaxed text-center md:text-left mt-4">Frameworks :</h2>
+        <div class="flex flex-wrap gap-2 mt-2 justify-center md:justify-start">
+          <span class="bg-blue-400 text-white px-3 py-1 rounded-full text-sm font-medium">React.JS</span>
+          <span class="bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-medium">Tauri</span>
+          <span class="bg-cyan-400 text-white px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
+        </div>
+        <h2 class="text-lg md:text-xl lg:text-2xl leading-relaxed text-center md:text-left mt-4">Tools :</h2>
+        <div class="flex flex-wrap gap-2 mt-2 justify-center md:justify-start">
+          <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">Git & GitHub</span>
+          <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">VS Code</span>
+          <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">NeoVim</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="w-full bg-[#0B0F1A] mt-10 px-4 py-8">
+
+
+
+  <section class="w-full bg-[#0B0F1A] mt-20 px-4 py-8" id="works">
     <h1 class="text-left text-2xl md:text-3xl font-bold mb-6">My works 🌟</h1>
-    <div class="flex flex-col gap-8 w-full text-[#1E1E2E]">
+    <div class="flex flex-col gap-8 w-full text-[#1E1E2E] ">
       <div class="bg-[#8C95AE] p-6 rounded-lg shadow-lg">
-        <img src="project1.jpeg" alt="Project Picture" class="w-full h-80 md:h-96 object-cover rounded-lg border border-[#8C95AE] shadow-md">
+        <img src="project1.jpeg" alt="Project Picture" class="w-full h-90 md:h-106 object-cover rounded-lg border border-[#8C95AE] shadow-md">
         <h1 class="text-center mt-4 text-xl md:text-2xl font-semibold">KAROU THEME - VS Code theme</h1>
         <p class="text-center mt-2">
           <a href="https://github.com/HAAZIQ-ALI/KAROU-Theme" target="_blank" class="inline-flex items-center text-[#1E1E2E] hover:text-blue-500 transition-colors">
@@ -78,7 +115,7 @@
         </p>
       </div>
       <div class="bg-[#8C95AE] p-6 rounded-lg shadow-lg">
-        <img src="project2.jpeg" alt="Project Picture" class="w-full h-80 md:h-96 object-cover rounded-lg border border-[#8C95AE] shadow-md">
+        <img src="project2.jpeg" alt="Project Picture" class="w-full h-90 md:h-106 object-cover rounded-lg border border-[#8C95AE] shadow-md">
         <h1 class="text-center mt-4 text-xl md:text-2xl font-semibold">MUSY - BEAUTIFUL WEB MUSIC PLAYER</h1>
         <p class="text-center mt-2">
           <a href="https://github.com/HAAZIQ-ALI/musy" target="_blank" class="inline-flex items-center text-[#1E1E2E] hover:text-blue-500 transition-colors">
@@ -88,7 +125,7 @@
         </p>
       </div>
       <div class="bg-[#8C95AE] p-6 rounded-lg shadow-lg">
-        <img src="project3.jpeg" alt="Project Picture" class="w-full h-80 md:h-96 object-cover rounded-lg border border-[#8C95AE] shadow-md">
+        <img src="project3.jpeg" alt="Project Picture" class="w-full h-90 md:h-106 object-cover rounded-lg border border-[#8C95AE] shadow-md">
         <h1 class="text-center mt-4 text-xl md:text-2xl font-semibold">KAROU.ME - TAURI & WEB APP </h1>
         <p class="text-center mt-2">
           <a href="https://github.com/HAAZIQ-ALI/karou" target="_blank" class="inline-flex items-center text-[#1E1E2E] hover:text-blue-500 transition-colors">
@@ -98,6 +135,19 @@
         </p>
       </div>
     </div>
+
+
+
+      <div class="w-full flex flex-col md:flex-row justify-center items-center p-4 md:p-8 text-slate-400 font-inter mt-10" id="contact">
+    
+    <a href="mailto:haaziq@karou.me" class="hover:text-white transition-colors">haaziq@karou.me</a>
+
+  </div>
+
+
+
+
   </section>
-</body>
+  <script src="main.js"></script>
+  </body>
 </html>
