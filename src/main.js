@@ -46,6 +46,12 @@ document.addEventListener("DOMContentLoaded", function() {
     menuBtn.addEventListener('click', toggleMenu);
   }
 
+  // Add event listener to close button
+  const closeBtn = document.getElementById('close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeMenu);
+  }
+
   // Add event listeners to nav links to close menu
   const navLinks = document.querySelectorAll('#nav-menu a');
   navLinks.forEach(link => {

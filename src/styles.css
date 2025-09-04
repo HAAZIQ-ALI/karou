@@ -51,3 +51,13 @@ body{
 #glass span {
   text-shadow: none !important;
 }
+
+/* Hide scrollbars */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
