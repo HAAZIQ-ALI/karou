@@ -1,10 +1,32 @@
 {
-  "name": "first",
+  "name": "karou-portfolio",
   "private": true,
   "version": "0.1.0",
+  "description": "A modern personal portfolio website built with Tauri that runs as both web and desktop application",
+  "author": "Haaziq Ali <haaziq@karou.me>",
+  "license": "MIT",
+  "homepage": "https://karou.me",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HAAZIQ-ALI/karou.git"
+  },
+  "keywords": [
+    "portfolio",
+    "tauri",
+    "desktop-app",
+    "web-app",
+    "tailwindcss",
+    "personal-website",
+    "rust",
+    "javascript"
+  ],
   "type": "module",
   "scripts": {
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build", 
+    "serve": "cd src && python -m http.server 8080",
+    "info": "tauri info"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2",
