@@ -137,10 +137,6 @@ The project uses a custom dark theme based on Catppuccin colors:
 --color-background: #1E1E2E; /* Dark background */
 ```
 
-### Fonts
-- **Headings**: Inter (professional, clean)
-- **Body**: Poppins (friendly, rounded)
-- **Code/Monospace**: IBM Plex Mono
 
 ## 🧪 Development
 
@@ -153,33 +149,7 @@ npx tauri build        # Production build
 npx tauri info         # Environment information
 ```
 
-### Adding New Sections
 
-1. Update `index.html` with your new section
-2. Add corresponding styles in `styles.css`
-3. Update navigation in `main.js` if needed
-4. Test responsiveness across different screen sizes
-
-## 👨‍💻 About the Developer
-
-**Haaziq Ali** - 15-year-old passionate developer
-
-- 🎯 **Focus**: Turning creative ideas into reality
-- 💻 **Languages**: C, C++, Python, Rust, Go, JavaScript
-- 🛠️ **Frameworks**: React.js, Tauri, Tailwind CSS
-- 🔧 **Tools**: Git & GitHub, VS Code, NeoVim
-- ♟️ **Hobbies**: Chess, cooking, anime, continuous learning
-
-### Featured Projects
-- **[KAROU Theme](https://github.com/HAAZIQ-ALI/KAROU-Theme)** - VS Code theme
-- **[MUSY](https://github.com/HAAZIQ-ALI/musy)** - Beautiful web music player
-- **[KAROU.ME](https://github.com/HAAZIQ-ALI/karou)** - This portfolio (Tauri & Web app)
-
-## 📞 Contact
-
-- **Email**: [haaziq@karou.me](mailto:haaziq@karou.me)
-- **GitHub**: [@HAAZIQ-ALI](https://github.com/HAAZIQ-ALI)
-- **Website**: [karou.me](https://karou.me)
 
 ## 📄 License
 
@@ -193,7 +163,8 @@ This project is open source and available under the [MIT License](LICENSE).
 - **Google Fonts** - For the typography
 
 ---
-
+## Inspiration 
+- **https://hayyaoe.github.io/** - For the awesome minimal design
 <div align="center">
 
 **Made with ❤️ by [Haaziq Ali](https://github.com/HAAZIQ-ALI)**
