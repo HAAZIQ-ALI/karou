@@ -37,13 +37,13 @@
 
 ## 📸 Screenshots
 
-### Home Page - Introduction
+### Hero Page - Introduction
 <img width="1366" height="768" alt="Karou.me Homepage featuring introduction section with multilingual name display" src="https://github.com/user-attachments/assets/84bdae76-8731-4d9e-8a57-0ef46b10590d" />
 
-### About Section - Skills & Technologies
+### Nav Section - 
 <img width="1366" height="768" alt="About section showcasing programming languages, frameworks, and development tools" src="https://github.com/user-attachments/assets/f3d444cf-4a46-4721-85a0-074397a66c2d" />
 
-### Projects Showcase
+### About Me Section - About Me And Skills
 <img width="1366" height="768" alt="Projects section displaying featured works including VS Code theme and music player" src="https://github.com/user-attachments/assets/3db33967-bf60-4098-a150-e78ff2b3d840" />
 
 ## 🚀 Quick Start
