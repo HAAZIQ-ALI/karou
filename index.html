@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karou.me - Haaziq Ali's Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary': '#CBA6F7',
+            'secondary': '#89B4FA',
+            'accent': '#F38BA8',
+            'muted': '#6C7086',
+            'highlight': '#A6E3A1',
+          },
+          fontFamily: {
+            'ibm': ['"IBM Plex Mono"', 'monospace'],
+            'lexend': ['"Lexend"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-[#1E1E2E] text-primary font-lexend min-h-screen" oncontextmenu="return false;">
+  <div class="flex justify-end p-4">
+    <div class="flex items-center space-x-4">
+      <h2 class="font-ibm text-xl sm:text-2xl md:text-3xl lg:text-3xl text-highlight leading-relaxed" id="nav-bar">
+        ハージク・アリ</h2>
+      <button id="menu-btn" class="text-highlight hover:text-primary transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <nav id="nav-menu"
+      class="hidden fixed top-0 left-0 w-screen h-screen bg-[#1E1E2E]/90 backdrop-blur-md border border-muted p-8 flex items-center justify-center z-50  transition-colors duration-300 ease-in">
+      <button id="close-btn" class="absolute top-4 right-4 text-muted hover:text-highlight transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <ul class="space-y-4 text-center">
+        <li><a href="#intro"
+            class="block text-xl text-muted py-2 hover:text-[#F38BA8] transition-colors duration-300 ease-in no-underline">Home</a>
+        </li>
+        <li><a href="#about"
+            class="block text-xl text-muted py-2 hover:text-[#F38BA8] transition-colors duration-300 ease-in">About</a>
+        </li>
+        <li><a href="#works"
+            class="block text-xl text-muted py-2 hover:text-[#F38BA8] transition-colors duration-300 ease-in">Works</a>
+        </li>
+        <li><a href="#contact"
+            class="block text-xl text-muted py-2 hover:text-[#F38BA8] transition-colors duration-300 ease-in">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    
+    <!-- Screenshots Modal -->
+    <div id="screenshots-modal"
+      class="hidden fixed top-0 left-0 w-screen h-screen bg-[#1E1E2E]/90 backdrop-blur-md border border-muted p-4 sm:p-8 flex items-center justify-center z-50 transition-colors duration-300 ease-in">
+      <button id="screenshots-close-btn" class="absolute top-4 right-4 text-muted hover:text-highlight transition-colors z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      
+      <div class="w-full max-w-4xl">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-6 text-center">Karou Theme Screenshots</h1>
+        
+        <div class="relative flex items-center justify-center">
+          <!-- Previous button -->
+          <button id="prev-btn" class="absolute left-0 z-10 p-2 text-highlight hover:text-primary transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <!-- Screenshot container -->
+          <div class="w-full px-16 flex justify-center">
+            <img id="screenshot-display" src="./assets/karouTheme1.png" alt="Karou Theme Screenshot" 
+              class="w-full h-auto max-h-96 object-contain rounded-lg shadow-lg border border-muted">
+          </div>
+          
+          <!-- Next button -->
+          <button id="next-btn" class="absolute right-0 z-10 p-2 text-highlight hover:text-primary transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        
+        <!-- Indicator dots -->
+        <div class="flex justify-center gap-2 mt-6">
+          <button class="screenshot-dot active w-2 h-2 rounded-full bg-highlight transition-colors" data-index="0"></button>
+          <button class="screenshot-dot w-2 h-2 rounded-full bg-muted hover:bg-highlight transition-colors" data-index="1"></button>
+          <button class="screenshot-dot w-2 h-2 rounded-full bg-muted hover:bg-highlight transition-colors" data-index="2"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex justify-center items-center min-h-screen" id="intro">
+    <section class="flex flex-col px-4 py-8 sm:px-8 md:px-16 lg:px-10 xl:px-14 w-full max-w-7xl mx-auto">
+      <h2 class="font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Hi I'm </h2>
+      <h1
+        class="text-[#89B4FA] font-ibm font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight">
+        Haaziq</h1>
+      <p class="font-semibold text-[#848DA5] text-2xl sm:text-3xl md:text-4xl lg:text-5xl pt-2">Learner - Programmer
+        <br> - Chess Player - Logician</p>
+    </section>
+  </div>
+
+  <div
+    class="w-full flex flex-col md:flex-row justify-between items-center p-4 md:p-8 -slate-400 fonttext-inter gap-4 md:gap-0">
+    <a href="https://github.com/HAAZIQ-ALI" target="_blank"
+      class="hover:text-white transition-colors">GITHUB.COM/HAAZIQ-ALI</a>
+
+    <p class="text-sm">©hazy</p>
+  </div>
+
+  <section class="w-full mx-auto flex justify-center pt-20 px-4 " id="about">
+    <div class="w-full max-w-6xl flex flex-col md:flex-row items-center gap-6 md:gap-8">
+      <div class="w-full md:w-auto flex justify-center md:justify-start">
+
+        <img src="./assets/pfp.jpeg" alt="Profile Picture"
+          class="w-64 h-64 md:w-96 md:h-96 object-cover rounded-lg border border-[#6C7086] shadow-lg">
+      </div>
+      <div class="bg-[#9EE3B9] text-white p-4 md:p-6 rounded-lg w-full md:flex-1 text-glow " id="glass">
+        <h1 class="text-xl md:text-2xl lg:text-3xl font-semibold mb-3 md:mb-4 text-center md:text-left">I'm 
+          a 15-Year-Old Who Wants To Learn And Explore Everything . <span  class="font-bold text-yellow-400 text-glow-yellow text-2xl sm:text-3xl md:text-4xl">HE / HIM</span> <span id="emoji"></span></h1>
+        <h2 class="text-lg md:text-xl lg:text-2xl leading-relaxed text-center md:text-left">I love solving problems and
+          building projects— <a href="https://github.com/HAAZIQ-ALI" target="_blank"
+            class="text-blue-500 hover:underline inline-flex items-center"><img src="./assets/github.svg" alt="GitHub"
+              class="h-5 w-5 ml-1 invert"></a> Outside coding, I enjoy chess, cooking, anime, and always learning
+          something new. My life is about improvement.</h2>
+        <h2 class="text-lg md:text-xl lg:text-2xl leading-relaxed text-center md:text-left mt-2">Languages :</h2>
+        <div class="flex flex-wrap gap-2 mt-2 justify-center md:justify-start">
+          <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">C</span>
+          <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">C++</span>
+          <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Python</span>
+          <span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">Rust</span>
+          <span class="bg-cyan-500 text-white px-3 py-1 rounded-full text-sm font-medium">Go</span>
+          <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+        </div>
+        <h2 class="text-lg md:text-xl lg:text-2xl leading-relaxed text-center md:text-left mt-4">Frameworks :</h2>
+        <div class="flex flex-wrap gap-2 mt-2 justify-center md:justify-start">
+          <span class="bg-blue-400 text-white px-3 py-1 rounded-full text-sm font-medium">React.JS</span>
+          <span class="bg-cyan-400 text-white px-3 py-1 rounded-full text-sm font-medium">Tailwind CSS</span>
+        </div>
+        <h2 class="text-lg md:text-xl lg:text-2xl leading-relaxed text-center md:text-left mt-4">Tools :</h2>
+        <div class="flex flex-wrap gap-2 mt-2 justify-center md:justify-start">
+          <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">Git & GitHub</span>
+          <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">VS Code</span>
+          <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">NeoVim</span>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </section>
+  <div class="w-full flex justify-center">
+    <div id="stats"
+      class="w-11/12 max-w-4xl mt-8 flex flex-col md:flex-row gap-4 items-center justify-center md:justify-end">
+      <!-- Years card -->
+      <div
+        class="glass-card flex flex-col items-center justify-center w-full sm:w-64 md:w-72 h-auto sm:h-24 p-3 rounded-lg">
+        <h1 class="font-bold text-yellow-400 text-glow-yellow text-2xl sm:text-3xl md:text-4xl">1.5 ++</h1>
+        <h2 class="font-semibold text-cyan-300 text-glow-cyan text-sm sm:text-base md:text-lg mt-1">Years Spent
+          Programming</h2>
+      </div>
+
+      <!-- Projects built card -->
+      <div
+        class="glass-card flex flex-col items-center justify-center w-full sm:w-64 md:w-72 h-auto sm:h-24 p-3 rounded-lg">
+        <h1 class="font-bold text-accent text-glow-accent text-2xl sm:text-3xl md:text-4xl">12 ++</h1>
+        <h2 class="font-semibold text-primary text-glow-cyan text-sm sm:text-base md:text-lg mt-1">Projects Built</h2>
+      </div>
+    </div>
+  </div>
+
+
+
+  <section class="w-full bg-[#0B0F1A] mt-20 px-4 py-8" id="works">
+    <h1 class="text-left text-2xl md:text-3xl font-bold mb-6">My works 🌟 --></h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+    <div class="h-64 w-124  bg-[#a9a8cc] glass-for-cards backdrop-blur-xs rounded-lg rounded-tl-2xl shadow-lg [clip-path:polygon(0_0,100%_0,100%_calc(100%-0.75rem),calc(100%-0.75rem)_100%,0_100%)]  transition transform hover:-translate-y-2 hover:shadow-xl ">
+    <h1 class="text-lg font-bold text-[#1E1E2E] p-1"> KAROU THEME - VS Code theme</h1>
+    <h2 class="text-sm font-semibold text-slate-200 p-1">Elegant and beautiful dark theme for VSCodium/Visual Studio Code.</h2>
+    <div class="grid grid-cols-3 gap-2 mt-2 ">
+      <div class="bg-[#1A1B2A] h-16 w-18   shadow-lg [clip-path:polygon(0_0,100%_0,100%_calc(100%-0.75rem),calc(100%-0.75rem)_100%,0_100%)] transition transform hover:-translate-y-1 hover:shadow-xl mouse-pointer "> <h1 class="text-sm text-[#a9a8cc] text-center ">DOWNLOADS</h1> <h2 class="text-center text-white text-glow">70++</h2></div>
+      <div class="bg-[#1A1B2A] h-16 w-18  shadow-lg [clip-path:polygon(0_0,100%_0,100%_calc(100%-0.75rem),calc(100%-0.75rem)_100%,0_100%)] transition transform hover:-translate-y-1 hover:shadow-xl "> <h1 class="text-sm text-[#a9a8cc] text-center">STARS</h1> <h2 class="text-center text-white text-glow">2 x 5 </h2></div>
+      <div class="bg-[#1A1B2A] h-16 w-18   shadow-lg [clip-path:polygon(0_0,100%_0,100%_calc(100%-0.75rem),calc(100%-0.75rem)_100%,0_100%)] transition transform hover:-translate-y-1 hover:shadow-xl "> <h1 class="text-sm text-[#8989A8] text-center">FORKS</h1> <h2 class="text-center text-white text-glow">none</h2></div>
+      <div class="col-span-3">
+        <div class="flex items-center  gap-4 text-[#1A1B2A] whitespace-nowrap mt-14 justify-end m-2">
+          <button id="screenshots-btn-karou" data-project="karou" class="bg-[#1E1E2E] text-white text-glow rounded-lg px-4 py-2 text-sm sm:test-xs  hover:bg-[#2A2A3E] transition-all duration-200 mr-2 sm:mr-4 md:mr-6  w-full sm:w-auto text-center">ScreenShots</button>
+          <a href="https://marketplace.visualstudio.com/items?itemName=HAAZIQ-ALI.karou" target="_blank" class="inline-flex items-center gap-2 hover:text-[#89B4FA] transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+            VS Marketplace
+          </a>
+         
+          <a href="https://github.com/HAAZIQ-ALI/karou" target="_blank" class="inline-flex items-center gap-2 hover:text-primary transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -3.5 256 256" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+              <g>
+                <path d="M127.505 0C57.095 0 0 57.085 0 127.505c0 56.336 36.534 104.13 87.196 120.99 6.372 1.18 8.712-2.766 8.712-6.134 0-3.04-.119-13.085-.173-23.739-35.473 7.713-42.958-15.044-42.958-15.044-5.8-14.738-14.157-18.656-14.157-18.656-11.568-7.914.872-7.752.872-7.752 12.804.9 19.546 13.14 19.546 13.14 11.372 19.493 29.828 13.857 37.104 10.6 1.144-8.242 4.449-13.866 8.095-17.05-28.32-3.225-58.092-14.158-58.092-63.014 0-13.92 4.981-25.295 13.138-34.224-1.324-3.212-5.688-16.18 1.235-33.743 0 0 10.707-3.427 35.073 13.07 10.17-2.826 21.078-4.242 31.914-4.29 10.836.048 21.752 1.464 31.942 4.29 24.337-16.497 35.029-13.07 35.029-13.07 6.94 17.563 2.574 30.531 1.25 33.743 8.175 8.929 13.122 20.303 13.122 34.224 0 48.972-29.828 59.756-58.22 62.912 4.573 3.957 8.648 11.717 8.648 23.612 0 17.06-.148 30.791-.148 34.991 0 3.393 2.295 7.369 8.759 6.117 50.634-16.879 87.122-64.656 87.122-120.973C255.009 57.085 197.922 0 127.505 0"/>
+                <path d="M47.755 181.634c-.28.633-1.278.823-2.185.389-.925-.416-1.445-1.28-1.145-1.916.275-.652 1.273-.834 2.196-.396.927.415 1.455 1.287 1.134 1.923M54.027 187.23c-.608.564-1.797.302-2.604-.589-.834-.889-.99-2.077-.373-2.65.627-.563 1.78-.3 2.616.59.834.899.996 2.08.36 2.65M58.33 194.39c-.782.543-2.06.034-2.849-1.1-.781-1.133-.781-2.493.017-3.038.792-.545 2.05-.055 2.85 1.07.78 1.153.78 2.513-.019 3.069M65.606 202.683c-.699.77-2.187.564-3.277-.488-1.114-1.028-1.425-2.487-.724-3.258.707-.772 2.204-.555 3.302.488 1.107 1.026 1.445 2.496.7 3.258M75.01 205.483c-.307.998-1.741 1.452-3.185 1.028-1.442-.437-2.386-1.607-2.095-2.616.3-1.005 1.74-1.478 3.195-1.024 1.44.435 2.386 1.596 2.086 2.612M85.714 206.67c.036 1.052-1.189 1.924-2.705 1.943-1.525.033-2.758-.818-2.774-1.852 0-1.062 1.197-1.926 2.721-1.951 1.516-.03 2.758.815 2.758 1.86M96.228 206.267c.182 1.026-.872 2.08-2.377 2.36-1.48.27-2.85-.363-3.039-1.38-.184-1.052.89-2.105 2.367-2.378 1.508-.262 2.857.355 3.049 1.398"/>
+              </g>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div></div>
+
+
+ <div class="h-64 w-124  bg-[#89B4FA] glass-for-cards backdrop-blur-xs rounded-lg rounded-tl-2xl shadow-lg [clip-path:polygon(0_0,100%_0,100%_calc(100%-0.75rem),calc(100%-0.75rem)_100%,0_100%)] transition transform hover:-translate-y-2 hover:shadow-xl  ">
+    <h1 class="text-lg font-bold text-[#1E1E2E] p-1"> Hazy Share</h1>
+    <h2 class="text-sm font-semibold text-slate-200 p-1"> Use Hazy Share to transport stuff 🦅🚛 on LAN</h2>
+    <div class="grid grid-cols-3 gap-2 mt-2 ">
+      <div class="bg-[#1A1B2A] h-16 w-18   shadow-lg [clip-path:polygon(0_0,100%_0,100%_calc(100%-0.75rem),calc(100%-0.75rem)_100%,0_100%)] transition transform hover:-translate-y-1 hover:shadow-xl mouse-pointer "> <h1 class="text-sm text-[#a9a8cc] text-center ">DOWNLOADS</h1> <h2 class="text-center text-white text-glow">3++</h2></div>
+      <div class="bg-[#1A1B2A] h-16 w-18  shadow-lg [clip-path:polygon(0_0,100%_0,100%_calc(100%-0.75rem),calc(100%-0.75rem)_100%,0_100%)] transition transform hover:-translate-y-1 hover:shadow-xl "> <h1 class="text-sm text-[#a9a8cc] text-center">STARS</h1> <h2 class="text-center text-white text-glow">1 (its me 🥺) </h2></div>
+      <div class="bg-[#1A1B2A] h-16 w-18   shadow-lg [clip-path:polygon(0_0,100%_0,100%_calc(100%-0.75rem),calc(100%-0.75rem)_100%,0_100%)] transition transform hover:-translate-y-1 hover:shadow-xl "> <h1 class="text-sm text-[#8989A8] text-center">FORKS</h1> <h2 class="text-center text-white text-glow">none</h2></div>
+      <div class="col-span-3">
+        <div class="flex items-center  gap-4 text-[#1A1B2A] whitespace-nowrap mt-14 justify-end m-2">
+          <button id="screenshots-btn-hazyshare" data-project="hazyshare" class="bg-[#1E1E2E] text-white text-glow rounded-lg px-4 py-2 text-sm sm:test-xs  hover:bg-[#2A2A3E] transition-all duration-200 mr-2 sm:mr-4 md:mr-6  w-full sm:w-auto text-center">ScreenShots</button>
+          <a href="https://marketplace.visualstudio.com/items?itemName=HAAZIQ-ALI.karou" target="_blank" class="inline-flex items-center gap-2 hover:text-[#89B4FA] transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+            VS Marketplace
+          </a>
+         
+          <a href="https://github.com/HAAZIQ-ALI/karou" target="_blank" class="inline-flex items-center gap-2 hover:text-primary transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -3.5 256 256" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+              <g>
+                <path d="M127.505 0C57.095 0 0 57.085 0 127.505c0 56.336 36.534 104.13 87.196 120.99 6.372 1.18 8.712-2.766 8.712-6.134 0-3.04-.119-13.085-.173-23.739-35.473 7.713-42.958-15.044-42.958-15.044-5.8-14.738-14.157-18.656-14.157-18.656-11.568-7.914.872-7.752.872-7.752 12.804.9 19.546 13.14 19.546 13.14 11.372 19.493 29.828 13.857 37.104 10.6 1.144-8.242 4.449-13.866 8.095-17.05-28.32-3.225-58.092-14.158-58.092-63.014 0-13.92 4.981-25.295 13.138-34.224-1.324-3.212-5.688-16.18 1.235-33.743 0 0 10.707-3.427 35.073 13.07 10.17-2.826 21.078-4.242 31.914-4.29 10.836.048 21.752 1.464 31.942 4.29 24.337-16.497 35.029-13.07 35.029-13.07 6.94 17.563 2.574 30.531 1.25 33.743 8.175 8.929 13.122 20.303 13.122 34.224 0 48.972-29.828 59.756-58.22 62.912 4.573 3.957 8.648 11.717 8.648 23.612 0 17.06-.148 30.791-.148 34.991 0 3.393 2.295 7.369 8.759 6.117 50.634-16.879 87.122-64.656 87.122-120.973C255.009 57.085 197.922 0 127.505 0"/>
+                <path d="M47.755 181.634c-.28.633-1.278.823-2.185.389-.925-.416-1.445-1.28-1.145-1.916.275-.652 1.273-.834 2.196-.396.927.415 1.455 1.287 1.134 1.923M54.027 187.23c-.608.564-1.797.302-2.604-.589-.834-.889-.99-2.077-.373-2.65.627-.563 1.78-.3 2.616.59.834.899.996 2.08.36 2.65M58.33 194.39c-.782.543-2.06.034-2.849-1.1-.781-1.133-.781-2.493.017-3.038.792-.545 2.05-.055 2.85 1.07.78 1.153.78 2.513-.019 3.069M65.606 202.683c-.699.77-2.187.564-3.277-.488-1.114-1.028-1.425-2.487-.724-3.258.707-.772 2.204-.555 3.302.488 1.107 1.026 1.445 2.496.7 3.258M75.01 205.483c-.307.998-1.741 1.452-3.185 1.028-1.442-.437-2.386-1.607-2.095-2.616.3-1.005 1.74-1.478 3.195-1.024 1.44.435 2.386 1.596 2.086 2.612M85.714 206.67c.036 1.052-1.189 1.924-2.705 1.943-1.525.033-2.758-.818-2.774-1.852 0-1.062 1.197-1.926 2.721-1.951 1.516-.03 2.758.815 2.758 1.86M96.228 206.267c.182 1.026-.872 2.08-2.377 2.36-1.48.27-2.85-.363-3.039-1.38-.184-1.052.89-2.105 2.367-2.378 1.508-.262 2.857.355 3.049 1.398"/>
+              </g>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div></div>
+
+     <div class="h-64 w-124  bg-[#CBA6F7] glass-for-cards backdrop-blur-xs rounded-lg rounded-tl-2xl shadow-lg [clip-path:polygon(0_0,100%_0,100%_calc(100%-0.75rem),calc(100%-0.75rem)_100%,0_100%)]  transition transform hover:-translate-y-2 hover:shadow-xl ">
+    <h1 class="text-lg font-bold text-[#1E1E2E] p-1"> musy</h1>
+    <h2 class="text-sm font-semibold text-slate-200 p-1">an handsome music player <br>built with JS & Tailwind </h2>
+    <div class="grid grid-cols-3 gap-2 mt-2 ">
+      <div class="bg-[#1A1B2A] h-16 w-18   shadow-lg [clip-path:polygon(0_0,100%_0,100%_calc(100%-0.75rem),calc(100%-0.75rem)_100%,0_100%)] transition transform hover:-translate-y-1 hover:shadow-xl mouse-pointer "> <h1 class="text-sm text-[#a9a8cc] text-center ">DOWNLOADS</h1> <h2 class="text-center text-white text-glow">1++</h2></div>
+      <div class="bg-[#1A1B2A] h-16 w-18  shadow-lg [clip-path:polygon(0_0,100%_0,100%_calc(100%-0.75rem),calc(100%-0.75rem)_100%,0_100%)] transition transform hover:-translate-y-1 hover:shadow-xl "> <h1 class="text-sm text-[#a9a8cc] text-center">STARS</h1> <h2 class="text-center text-white text-glow">2 </h2></div>
+      <div class="bg-[#1A1B2A] h-16 w-18   shadow-lg [clip-path:polygon(0_0,100%_0,100%_calc(100%-0.75rem),calc(100%-0.75rem)_100%,0_100%)] transition transform hover:-translate-y-1 hover:shadow-xl "> <h1 class="text-sm text-[#8989A8] text-center">FORKS</h1> <h2 class="text-center text-white text-glow">none</h2></div>
+      <div class="col-span-3">
+        <div class="flex items-center  gap-4 text-[#1A1B2A] whitespace-nowrap mt-14 justify-end m-2">
+          <button id="screenshots-btn-musy" data-project="musy" class="bg-[#1E1E2E] text-white text-glow rounded-lg px-4 py-2 text-sm sm:test-xs  hover:bg-[#2A2A3E] transition-all duration-200 mr-2 sm:mr-4 md:mr-6  w-full sm:w-auto text-center">ScreenShots</button>
+          <a href="https://marketplace.visualstudio.com/items?itemName=HAAZIQ-ALI.karou" target="_blank" class="inline-flex items-center gap-2 hover:text-[#89B4FA] transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" /></svg>
+            VS Marketplace
+          </a>
+         
+          <a href="https://github.com/HAAZIQ-ALI/karou" target="_blank" class="inline-flex items-center gap-2 hover:text-primary transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -3.5 256 256" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+              <g>
+                <path d="M127.505 0C57.095 0 0 57.085 0 127.505c0 56.336 36.534 104.13 87.196 120.99 6.372 1.18 8.712-2.766 8.712-6.134 0-3.04-.119-13.085-.173-23.739-35.473 7.713-42.958-15.044-42.958-15.044-5.8-14.738-14.157-18.656-14.157-18.656-11.568-7.914.872-7.752.872-7.752 12.804.9 19.546 13.14 19.546 13.14 11.372 19.493 29.828 13.857 37.104 10.6 1.144-8.242 4.449-13.866 8.095-17.05-28.32-3.225-58.092-14.158-58.092-63.014 0-13.92 4.981-25.295 13.138-34.224-1.324-3.212-5.688-16.18 1.235-33.743 0 0 10.707-3.427 35.073 13.07 10.17-2.826 21.078-4.242 31.914-4.29 10.836.048 21.752 1.464 31.942 4.29 24.337-16.497 35.029-13.07 35.029-13.07 6.94 17.563 2.574 30.531 1.25 33.743 8.175 8.929 13.122 20.303 13.122 34.224 0 48.972-29.828 59.756-58.22 62.912 4.573 3.957 8.648 11.717 8.648 23.612 0 17.06-.148 30.791-.148 34.991 0 3.393 2.295 7.369 8.759 6.117 50.634-16.879 87.122-64.656 87.122-120.973C255.009 57.085 197.922 0 127.505 0"/>
+                <path d="M47.755 181.634c-.28.633-1.278.823-2.185.389-.925-.416-1.445-1.28-1.145-1.916.275-.652 1.273-.834 2.196-.396.927.415 1.455 1.287 1.134 1.923M54.027 187.23c-.608.564-1.797.302-2.604-.589-.834-.889-.99-2.077-.373-2.65.627-.563 1.78-.3 2.616.59.834.899.996 2.08.36 2.65M58.33 194.39c-.782.543-2.06.034-2.849-1.1-.781-1.133-.781-2.493.017-3.038.792-.545 2.05-.055 2.85 1.07.78 1.153.78 2.513-.019 3.069M65.606 202.683c-.699.77-2.187.564-3.277-.488-1.114-1.028-1.425-2.487-.724-3.258.707-.772 2.204-.555 3.302.488 1.107 1.026 1.445 2.496.7 3.258M75.01 205.483c-.307.998-1.741 1.452-3.185 1.028-1.442-.437-2.386-1.607-2.095-2.616.3-1.005 1.74-1.478 3.195-1.024 1.44.435 2.386 1.596 2.086 2.612M85.714 206.67c.036 1.052-1.189 1.924-2.705 1.943-1.525.033-2.758-.818-2.774-1.852 0-1.062 1.197-1.926 2.721-1.951 1.516-.03 2.758.815 2.758 1.86M96.228 206.267c.182 1.026-.872 2.08-2.377 2.36-1.48.27-2.85-.363-3.039-1.38-.184-1.052.89-2.105 2.367-2.378 1.508-.262 2.857.355 3.049 1.398"/>
+              </g>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div></div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+  </section>
+
+
+
+
+  
+
+</div>
+
+</section>
+
+<!-- Video Section - Last -->
+<section class="w-full relative min-h-screen flex items-center justify-center overflow-hidden">
+  <div id="video-wrapper" class="absolute inset-0 w-full h-full overflow-hidden">
+    <img id="video-poster" src="assets/bocchi.png" alt="Background" 
+      style="width:100%; height:100%; object-fit:cover; position: absolute; top: 0; left: 0;">
+    <video id="bg-desktop" autoplay muted loop playsinline 
+      style="width:100%; height:100%; object-fit:cover; display:none; position: absolute; top: 0; left: 0;">
+      <source src="assets/bocchi.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Contact Section -->
+  <section class="w-full flex justify-center mt-20 px-10 " id="contact">
+    <div class="w-full max-w-2xl ">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">
+          <span class="text-glow">Let's Connect</span>
+        </h2>
+        <p class="text-lg text-[#B4BEFE]">Feel free to reach out for collaborations or just a friendly chat</p>
+      </div>
+
+      <!-- Contact Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        <!-- Email Card -->
+        <a href="mailto:haaziq@karou.me" 
+          class="glass-card p-6 rounded-lg hover:scale-105 transition-transform duration-300 hover:shadow-lg group">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center group-hover:bg-accent/40 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-primary font-semibold text-lg">Email</h3>
+              <p class="text-muted text-sm group-hover:text-highlight transition-colors">haaziq@karou.me</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Discord Card -->
+        <a href="https://discord.com/users/1307313319593377832" target="_blank"
+          class="glass-card p-6 rounded-lg hover:scale-105 transition-transform duration-300 hover:shadow-lg group">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center group-hover:bg-secondary/40 transition-colors">
+              <img src="assets/discord.svg" alt="Discord" class="w-6 h-6 invert" />
+            </div>
+            <div>
+              <h3 class="text-primary font-semibold text-lg">Discord</h3>
+              <p class="text-muted text-sm group-hover:text-highlight transition-colors">hazzy_dev</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- GitHub Card -->
+        <a href="https://github.com/HAAZIQ-ALI" target="_blank"
+          class="glass-card p-6 rounded-lg hover:scale-105 transition-transform duration-300 hover:shadow-lg group">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-highlight/20 rounded-lg flex items-center justify-center group-hover:bg-highlight/40 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-highlight" viewBox="0 -3.5 256 256" fill="currentColor">
+                <g>
+                  <path d="M127.505 0C57.095 0 0 57.085 0 127.505c0 56.336 36.534 104.13 87.196 120.99 6.372 1.18 8.712-2.766 8.712-6.134 0-3.04-.119-13.085-.173-23.739-35.473 7.713-42.958-15.044-42.958-15.044-5.8-14.738-14.157-18.656-14.157-18.656-11.568-7.914.872-7.752.872-7.752 12.804.9 19.546 13.14 19.546 13.14 11.372 19.493 29.828 13.857 37.104 10.6 1.144-8.242 4.449-13.866 8.095-17.05-28.32-3.225-58.092-14.158-58.092-63.014 0-13.92 4.981-25.295 13.138-34.224-1.324-3.212-5.688-16.18 1.235-33.743 0 0 10.707-3.427 35.073 13.07 10.17-2.826 21.078-4.242 31.914-4.29 10.836.048 21.752 1.464 31.942 4.29 24.337-16.497 35.029-13.07 35.029-13.07 6.94 17.563 2.574 30.531 1.25 33.743 8.175 8.929 13.122 20.303 13.122 34.224 0 48.972-29.828 59.756-58.22 62.912 4.573 3.957 8.648 11.717 8.648 23.612 0 17.06-.148 30.791-.148 34.991 0 3.393 2.295 7.369 8.759 6.117 50.634-16.879 87.122-64.656 87.122-120.973C255.009 57.085 197.922 0 127.505 0"/>
+                </g>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-primary font-semibold text-lg">GitHub</h3>
+              <p class="text-muted text-sm group-hover:text-highlight transition-colors">@HAAZIQ-ALI</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Location Card -->
+        <div class="glass-card p-6 rounded-lg hover:scale-105 transition-transform duration-300 hover:shadow-lg group">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center ">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-primary font-semibold text-lg">Based In</h3>
+              <p class="text-muted text-sm group-hover:text-highlight transition-colors">In India </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+    
+      <!-- Footer -->
+      <div class="text-center mt-12 pt-8 border-t border-muted/20">
+        <p class="text-sm text-[B4BEFE]">
+          © 2025 Haaziq Ali · Handcrafted with <span class="text-highlight">&lt;div&gt;</span>s and <span class="text-primary">dreams</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <audio id="bg-music" src="assets/memoryReboot.mp3" preload="auto"></audio>
+  <button class="music-btn" data-action="music">▶</button>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
